@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="Blayden" content="Ia generator content for blog"/>
+        <title>{% block title %}Ia Generator Youtube{% endblock %}</title>
+        <link rel="icon" type="img/x-icon" href="{% static "img/m-logo.svg"%}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+        <!-- DARK MODE -->
+        <script>
+            /* Configurar la estrategia de modo oscuro */
+            tailwind.config = {
+                darkMode: "class",
+            };
+        </script>
+        <script>
+            /**
+             * Loads the theme stored
+             */
+            if (
+                localStorage.getItem("color-theme") === "dark" ||
+                (!("color-theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
+    </head>
+    <body class="bg-white dark:bg-gray-800 dark:border-gray-700">
+        <div class="mx-auto">
+            {% include "./navbar.html" %}
+            {% block content %}{% endblock %}
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="{% static 'js/main.js' %}" ></script>
+        <script src="{% static 'js/dark-mode.js' %}" ></script>
+    </body>
+</html>
